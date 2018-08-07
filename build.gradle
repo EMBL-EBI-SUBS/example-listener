@@ -1,0 +1,39 @@
+buildscript {
+	ext {
+		springBootVersion = '1.5.15.RELEASE'
+	}
+	repositories {
+		mavenCentral()
+	}
+	dependencies {
+		classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+	}
+}
+
+apply plugin: 'java'
+apply plugin: 'eclipse'
+apply plugin: 'org.springframework.boot'
+apply plugin: 'application'
+
+group = 'uk.ac.ebi.subs'
+version = '0.1.0-SNAPSHOT'
+sourceCompatibility = 1.8
+
+mainClassName = "uk.ac.ebi.subs.ExampleListenerApplication"
+
+repositories {
+	mavenCentral()
+	maven { url 'https://oss.sonatype.org/content/repositories/snapshots' }
+}
+
+dependencies {
+    compile('org.springframework.boot:spring-boot-starter')
+    
+    compile('uk.ac.ebi.subs:subs-messaging:0.4.0-SNAPSHOT')
+
+	testCompile('org.springframework.boot:spring-boot-starter-test')
+}
+
+springBoot {
+    executable = true
+}
